@@ -1,0 +1,68 @@
+(function() {
+  const BASE_URL = 'https://mangalik.net';
+
+  async function discoveryHome() {
+    const res = await fetchv2(`${BASE_URL}/`, {
+      headers: { 'User-Agent': 'SynthetiqBooks/1.0' }
+    });
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+    
+    return {
+      sections: [
+        {
+          id: 'latest',
+          title: 'الأحدث',
+          items: []
+        }
+      ]
+    };
+  }
+
+  async function searchResults(query, page = 1) {
+    const url = `${BASE_URL}/page/${page}/?s=${encodeURIComponent(query)}`;
+    const res = await fetchv2(url);
+    if (!res.ok) return { items: [], hasMore: false };
+    
+    return { items: [], hasMore: false };
+  }
+
+  async function extractDetails(itemID) {
+    const url = `${BASE_URL}/manga/${itemID}/`;
+    const res = await fetchv2(url);
+    if (!res.ok) throw new Error(`Failed to load details: ${res.status}`);
+
+    return {
+      id: itemID,
+      title: '',
+      cover: '',
+      description: '',
+      author: '',
+      status: 'ongoing',
+      tags: []
+    };
+  }
+
+  async function extractChapters(itemID) {
+    const url = `${BASE_URL}/manga/${itemID}/`;
+    const res = await fetchv2(url);
+    if (!res.ok) throw new Error(`Failed to load chapters: ${res.status}`);
+
+    return [];
+  }
+
+  async function extractImages(chapterID) {
+    const url = `${BASE_URL}/${chapterID}/`;
+    const res = await fetchv2(url);
+    if (!res.ok) throw new Error(`Failed to load chapter pages: ${res.status}`);
+
+    return [];
+  }
+
+  globalThis.SynthetiqModule = {
+    discoveryHome,
+    searchResults,
+    extractDetails,
+    extractChapters,
+    extractImages
+  };
+})();
