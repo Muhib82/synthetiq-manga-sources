@@ -1,0 +1,22 @@
+{
+  "id": "mangalik",
+  "familyID": "mangalik-v1",
+  "name": "Manga arabic",
+  "version": "1.0.0",
+  "contentType": "pageImages",
+  "language": "ar",
+  "rating": "teen",
+  "releaseTrack": "stable",
+  "capabilities": ["discovery", "search", "details", "chapters", "pages"],
+  "baseURL": "https://mangalik.net",
+  "universalLink": "https://mangalik.net/*",
+  "allowedHosts": ["mangalik.net", "www.mangalik.net"],
+  "attribution": {
+    "name": "Manga arabic",
+    "url": "https://mangalik.net"
+  },
+  "limits": {
+    "requestsPerSecond": 2,
+    "maxConcurrent": 3
+  }
+}
