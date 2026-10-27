@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "mangalik",
+      "familyID": "mangalik-v1",
+      "name": "Manga arabic",
+      "modulePath": "modules/mangalik",
+      "iconPath": "modules/mangalik/icon.png",
+      "version": "1.0.0"
+    }
+  ]
+}
